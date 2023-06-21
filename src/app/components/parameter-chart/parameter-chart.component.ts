@@ -41,7 +41,6 @@ export class ParameterChartComponent {
       chart: {
         type: 'line'
       },
-
       title: {
         text: 'Line Chart',
       },
@@ -51,13 +50,35 @@ export class ParameterChartComponent {
       legend: {
         enabled: true,
       },
-      yAxis: {
+      // yAxis: {
+      //   title: {
+      //     text: null,
+      //   },
+      // },
+      yAxis: [{
+        lineWidth: 1,
         title: {
-          text: null,
+            text: 'Primary Axis'
         }
-      },
+    }, {
+        lineWidth: 1,
+        opposite: true,        
+        title: {
+            text: 'Secondary Axis',
+        },
+        // gridLineWidth: 2
+    }],
+    plotOptions: {
+      series: {
+          marker: {
+              symbol: 'circle'
+          }
+
+      }
+    },
       xAxis: {
         type: 'category',
+        gridLineWidth: 1,
       },
       tooltip: {
         headerFormat: `<div>Date: {point.key}</div>`,
@@ -69,12 +90,14 @@ export class ParameterChartComponent {
       series: [{
         name: 'Amount',
         // data: [['21/6', 500], ['22/6', 500], ['23/6', 700], ['24/6', 500], ['25/6', 500], ['26/6', 500], ['27/6', 500]]
-        data
+        data,
       },
       {
         name: 'Product',
-        data: data2
-      },
+        data: data2,
+        yAxis: 1
+
+      }
 
     ],
 
@@ -93,8 +116,8 @@ export class ParameterChartComponent {
       // -----------------------------option 1
       date.setDate(date.getDate() + 1);
       date2.setDate(date2.getDate() + 1);
-      chart.series[0].addPoint([`${date.getDate()}/${date.getMonth() + 1}`, this.getRandomNumber(0, 1000)], true, true);
-      chart.series[1].addPoint([`${date2.getDate()}/${date2.getMonth() + 2}`, this.getRandomNumber(0, 1000)], true, true);
+      chart.series[0].addPoint([`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`, this.getRandomNumber(0, 1000)], true, true);
+      chart.series[1].addPoint([`${date2.getDate()}/${date2.getMonth() + 2}/${date.getFullYear()}`, this.getRandomNumber(0, 1000)], true, true);
      
      // ----------------option 2
       // chart.series[0].addPoint(this.getRandomNumber(0, 1000), true, true)
