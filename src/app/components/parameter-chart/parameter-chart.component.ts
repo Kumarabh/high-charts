@@ -9,12 +9,17 @@ import * as Highcharts from 'highcharts';
 export class ParameterChartComponent {
 
   public ngAfterViewInit(): void {
-    this.createChartLine();
+     this.createChartLine();
   }
 
   private getRandomNumber(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
+
+
+
+
+
 
   private createChartLine(): void {
     let date = new Date();
